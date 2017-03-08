@@ -262,6 +262,7 @@ class Receive(MyThread):
         current_executor = Executor(self.general, new_socket, executor_communicator)
 
         executor_communicator.executor = current_executor
+        executor_communicator.executor_id = current_executor.id
 
         # Add the new client to the system.
         self.general.executors.append(current_executor)

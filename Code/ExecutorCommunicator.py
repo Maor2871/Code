@@ -15,6 +15,9 @@ class ExecutorCommunicator(MyThread):
         # The socket which this thread is using to communicate with the executor.
         self.socket = socket
 
+        # The id of the executor. (Should be changed at the moment he gets an id.)
+        self.executor_id = 0
+
         # The socket of the executor that this thread is communicating with.
         self.executor_socket = None
 
@@ -116,7 +119,7 @@ class Receive(MyThread):
 
                 new_output = message[2]
                 self.communicator.executor.current_request.client.client_communicator.send.messages_to_send.\
-                    append("Request::Status::New Output::" + new_output)
+                    append("Request::Status::New Output::" + new_output + "::" + str(self.communicator.executor_id))
 
             # The executor wants to send a new error from a request.
             elif len(message) > 2 and message[1] == "New Error":

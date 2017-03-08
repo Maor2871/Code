@@ -54,7 +54,7 @@ class Main(MyThread):
         FileInit.executor_init_files()
 
         # Setup the communication of this executor with the Main server of the system.
-        self.general.main_com = MainCommunication(self.general, "192.168.0.243", 7687, self.create_thread_communicator)
+        self.general.main_com = MainCommunication(self.general, "127.0.0.1", 7687, self.create_thread_communicator)
 
         # Start all the defined threads.
         self.general.main_com.start()
